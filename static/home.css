@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    padding : 0;
+    background-color: white;
+    height : 100vh;/* full height of veiw*/
+    overflow: hidden;
+    font-family : Arial,sans-serif;
+}
+
+.box{
+    width : 95vw;
+    height : 95vh;
+    background-color: white;
+    margin : 20px;
+    padding : 20px;
+    border : 2px solid white; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.navbar{
+    display : flex;
+    background-color: white;
+    align-items : flex start;
+    padding : 10px 20px;
+}
+
+.heading{
+    width : 100%;
+
+}
+
+.navbar h1{
+    margin : 0;
+    margin-bottom: 0;
+    font-style: normal;
+}
+
+.links{
+    display : flex;
+    width : 50%;
+    justify-content: space-between;
+    margin : 0;
+}
+
+.links a{
+    color : blue;
+    font-size: 20px;
+}
+
+.bluebox{
+    background-color : blue;
+    width:95vw;
+    height : 40px;
+}
+
+.login{
+    display : flex;
+    justify-content: flex-start;
+    margin : 0;
+    padding : 10px 20px;
+}
+
+.text{
+    width : 50%;
+}
+
+.text label{
+    font-size: 25px;
+}
+
+.text input{
+    width : 200px;
+    height : 40px;
+    font-size: 16px;
+    border : 1px solid;
+    border-radius: 6px;
+}
+
