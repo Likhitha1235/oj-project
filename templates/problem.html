@@ -1,0 +1,16 @@
+{% extends "copy_main.html" %}
+
+{% block title %}
+    {{my_context.problem_name}}
+{% endblock %}
+
+{% block link %}
+
+{% endblock %}
+
+{% block body %}
+    <div><h1>{{my_context.problem_name}}</h1></div>
+    <div><p>{{my_context.problem_question}}</p></div>
+    <div><p>{{my_context.problem_input}}</p></div>
+    <div><p>{{my_context.problem_output}}</p></div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "copy_main.html" %}
+
+{% block title %}
+    problemset
+{% endblock %}
+
+{% block link %}
+
+{% endblock %}
+
+{% block body %}
+{% for problem in my_context %}
+    <div>{{problem.problem_id}}</div>
+    <div>
+        <a href="{% url 'problem' problem.problem_name %}" title ="{{problem.problem_name}}">{{problem.problem_name}}</a>
+    </div>
+{% endfor %}
+{% endblock %}
