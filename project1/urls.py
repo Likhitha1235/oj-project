@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.urls import path
 
 from authentication.views import home_view,register_view,temp_view
+from problems.views import home_view as problems_home_view, problem_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view),
     path('register/',register_view),
     path('register/temp/',temp_view),
+    path('problems/',problems_home_view),
+    path('problems/<str:problem_name1>/',problem_view, name = "problem")
+    #path('',practice_view)
 ]

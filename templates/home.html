@@ -1,88 +1,78 @@
 {% extends "copy_main.html" %}
+{% load static %}
 
 {% block title %}
     Login page
 {% endblock %}
 
 {% block link %}
-    <link rel = "stylesheet" href = "/static/home.css">
+   <link rel="stylesheet" href  = "static/home.css/">
 {% endblock %}
 
 {% block body %}
+
 <div class="box">
-    <div class="navbar">
-        <div class="heading">
-            <h1>ONLINE JUDGE</h1>
+        <div class="navbar">
+            <div class="heading">
+                <h1>ONLINE JUDGE</h1>
+            </div>
+            <div class="links">
+                <div class="link"><a href="">Home</a></div>
+                <div class="link"><a href="problems/">Problem Set</a></div>
+                <div class="link"><a href="register/temp">My Submissions</a></div>
+                <div class="link"><a href="register/temp">profile</a></div>
+            </div>
         </div>
-        <div class="links">
-            <a href="register/temp">Home</a>
-            <a href="register/temp">Problem Set</a>
-            <a href="register/temp">My Submissions</a>
-            <a href="register/temp">Logout</a>
-        </div>
-    </div>
-
-    <div class="bluebox">
-
-    </div>
-
-    <div class = "login">
-        <div class = "text">
-            <h1> Login/Register </h1>
-            <form action = "." method = "POST"> {% csrf_token %}
-            <div>
-            <label for = "usertype">Usertype</label><br>
-            <select id = "usertype" name = "usertype">
-                <option value = user>user<option>
-                <optiion value = admin>admin<option>
-            </select>
-            </div>
-
-            <br>
-
-            <div>
-            <label for = "username">Username : </label><br>
-            <input type="text" 
-                id = "username" 
-                name = "username"
-                placeholder="username...."
-            >
-            </div>
-
-            <br>
-
-            <div>
-            <label for = "password">Password : </label><br>
-            <input 
-                type = "password"
-                id = "password"
-                name = "password"
-                placeholder="password...."
-            >
-            </div>
-
-            <br>
-
-            <div>
-            <input 
-                type = "submit"
-                value = "Login"
-            >
-            </div>
-
-            <div>
-            <p>register here....
-            <a href="register" title = "registration">Register</a>
-            <p>        
-
-            </div>
+        <div class="bluebar">
 
         </div>
-    
+
+        <div class="bottom">
+            <div class="login">
+                <h1>Login/Register</h1>
+
+                <form action="." method="POST">
+                    <div class="usertype">
+                        <label for="usertype">Usertype :</label><br>
+                        <select id="usertype" name="usertype">
+                            <option value=user>user
+                            <option>
+                                <optiion value=admin>admin
+                            <option>
+                        </select>
+                    </div>
+
+                    <div class="username">
+                        <label for="username">Username : </label><br>
+                        <input type="text" id="username" name="username" placeholder="username....">
+                    </div>
+
+                    <div class="password">
+                        <label for="password">Password : </label><br>
+                        <input type="password" id="password" name="password" placeholder="password....">
+                    </div>
+
+                    <div class="submit">
+                        <input type="submit" value="Login">
+                    </div>
+
+                    <div class = "register">
+                        <p>register here....
+                            <a href="register" title="registration">Register</a>
+                        <p>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="image">
+                <img src="static/images/image.png/" alt="code with online judge">
+            </div>
+        </div>
+
     </div>
-
-</div>
-
 
 
 {% endblock %}

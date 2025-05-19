@@ -7,13 +7,21 @@ from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 def home_view(request):
     if request.method == "POST":
+        usertype_requested = request.POST.get("usertype")
         username_requested = request.POST.get("username")
         password_requested = request.POST.get("password")
 
+        if username_requested == "" or password_requested == "":
+            messages.add_message(request,messages.INFO, "Please enter all the credentials")
+
         if not User.objects.filter(username = username_requested).exists():
+            messages.add_message(request,messages.INFO, "No such user exists")
+            messages.add_message(request,messages.INFO, "please register")
             return render(request,"home.html", {})
+
         
         user = authenticate(request, username = username_requested, password = password_requested)
+        return redirect("problems/")
 
         if user is not None:
             login(request,user)
@@ -44,7 +52,6 @@ def register_view(request):
 
 def temp_view(request):
     return HttpResponse("<h1>This is view page </h1>")
-
 
 
 
