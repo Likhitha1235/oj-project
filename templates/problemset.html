@@ -1,18 +1,67 @@
 {% extends "copy_main.html" %}
 
 {% block title %}
-    problemset
+problemset
 {% endblock %}
 
 {% block link %}
-
+<link rel="stylesheet" href="/static/problemset.css">
 {% endblock %}
 
 {% block body %}
-{% for problem in my_context %}
-    <div>{{problem.problem_id}}</div>
-    <div>
-        <a href="{% url 'problem' problem.problem_name %}" title ="{{problem.problem_name}}">{{problem.problem_name}}</a>
+<div class="box">
+    <div class="navbar">
+        <div class="heading">
+            <h1>ONLINE JUDGE</h1>
+        </div>
+        <div class="links">
+            <div class="link"><a href="/">Home</a></div>
+            <div class="link"><a href="problems/">Problem Set</a></div>
+            <div class="link"><a href="/register/temp">My Submissions</a></div>
+            <div class="link"><a href="/register/temp">profile</a></div>
+        </div>
     </div>
-{% endfor %}
+    <div class="bluebar">
+
+    </div>
+</div>
+<div class="bottom">
+    <div class="bottom_left">
+        {% for problem in my_context %}
+        {% if problem.problem_name %}
+            <div class="problem">
+                <div class="number">{{problem.problem_id}}</div>
+                <div class="problem_link">
+                    <a href="{% url 'problem' problem.problem_name %}"
+                        title="{{problem.problem_name}}">{{problem.problem_name}}</a>
+                </div>
+                <div class = "rating"><p>rating : {{problem.problem_rating}}<p></div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="bottom_right">
+        <h2>problem of the day:</h2>
+        <div class = "question_rand">
+            <p>{{random_problem.random_question}}</p>
+        </div>
+        <div class="examples">
+            <div>
+                <h2>Examples</h2>
+            </div>
+            <div class = "input">
+                <p> input : {{random_problem.random_input}}</p>
+            </div>
+            <div class = "output">
+                <p>output : {{random_problem.random_output}}</p>
+            </div>
+        </div>
+        <div class = "solve">
+            <a href="{% url 'problem' random_problem.random_name %}"
+                title="{{random_problem.random_name}}">Solve the problem..</a>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

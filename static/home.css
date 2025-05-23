@@ -2,9 +2,7 @@ body,html{
     margin : 0;
     overflow: hidden;
 }
-
 .box{
-    border : black;
     margin : 10px;
 }
 

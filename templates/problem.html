@@ -1,16 +1,94 @@
 {% extends "copy_main.html" %}
 
 {% block title %}
-    {{my_context.problem_name}}
+{{my_context.problem_name}}
 {% endblock %}
 
 {% block link %}
-
+<link rel="stylesheet" href="/static/problem.css/">
 {% endblock %}
 
 {% block body %}
-    <div><h1>{{my_context.problem_name}}</h1></div>
-    <div><p>{{my_context.problem_question}}</p></div>
-    <div><p>{{my_context.problem_input}}</p></div>
-    <div><p>{{my_context.problem_output}}</p></div>
+
+<div class="box">
+    <div class="navbar">
+        <div class="heading">
+            <h1>ONLINE JUDGE</h1>
+        </div>
+        <div class="links">
+            <div class="link"><a href="/">Home</a></div>
+            <div class="link"><a href="/problems">Problem Set</a></div>
+            <div class="link"><a href="register/temp">My Submissions</a></div>
+            <div class="link"><a href="register/temp">profile</a></div>
+        </div>
+    </div>
+    <div class="bluebar">
+
+    </div>
+</div>
+<div class="bottom">
+    <div class="left">
+        <div>
+            <h1>{{my_context.problem_name}}</h1>
+        </div>
+        <div>
+            <p>{{my_context.problem_question}}</p>
+        </div>
+        <div class="examples">
+            <div>
+                <h2>Examples</h2>
+            </div>
+            <div>
+                <p> input : {{my_context.problem_input}}</p>
+            </div>
+            <div>
+                <p>output : {{my_context.problem_output}}</p>
+            </div>
+        </div>
+        <div class="input_box">
+            <form action ="{% url 'run' my_context.problem_name %}" method="POST" onrun="copyCodeToRunForm()"> {% csrf_token %}
+                <input type = "hidden" name = "problem_name" value = "{{my_context.problem_name}}">
+                <input type = "hidden" name = "code" id = "run_code">
+                <input type = "hidden" name = "language" id = "run_language">
+                <h2>Input :</h2>
+                <div class="input"><textarea name="input" rows="5" cols="50" placeholder="Input here..."></textarea>
+                </div>
+                <h2>Output :</h2>
+                <div class="output"><textarea name="output" rows="5" cols="50" placeholder="Output here..." readonly></textarea>
+                </div>
+                <button type="submit" name = "action" value = "Run">Run</button>
+            </form>
+        </div>
+    </div>
+    <div class="right">
+        <form action = "{% url 'submission' %}" method = "POST"> {% csrf_token %}
+            <label for = "language" >Language</label>
+            <select id = "language" name = "language">
+                <option value = "C++">C++</option>
+                <option value = "Java">Java</option>
+                <option value = "Python">Python</option>
+            </select>
+            <h2>Code:</h2>
+            <textarea id = "code" name="code" rows="30" cols="50" placeholder="code here..."></textarea>
+            <div class="submit">
+                <button type="submit" name = "action" value = "Submit" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function copyCodeAndLanguage() {
+  // Get values from the submit form
+  const selectedLanguage = document.getElementById("language").value;
+  const codeContent = document.getElementById("code").value;
+
+  // Set them in hidden inputs of the run form
+  document.getElementById("run_language").value = selectedLanguage;
+  document.getElementById("run_code").value = codeContent;
+}
+</script>
+
+
+
 {% endblock %}
